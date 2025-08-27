@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "virtul-learning"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "virtul-learning-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

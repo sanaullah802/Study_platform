@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow authenticated users to read and write messages
+    match /messages/{messageId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Allow authenticated users to read and write test documents
+    match /test/{testId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Allow all users to read and write (for testing purposes)
+    // Remove this in production and use proper authentication rules
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

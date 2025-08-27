@@ -1,0 +1,15 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow authenticated users to upload and download materials
+    match /materials/{groupId}/{fileName} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Allow all users to read and write (for testing purposes)
+    // Remove this in production and use proper authentication rules
+    match /{allPaths=**} {
+      allow read, write: if true;
+    }
+  }
+}

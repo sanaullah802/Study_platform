@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "materials": {
+      "$groupId": {
+        ".read": true,
+        ".write": true
+      }
+    },
+    ".read": true,
+    ".write": true
+  }
+}
